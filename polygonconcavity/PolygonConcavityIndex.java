@@ -77,8 +77,6 @@ public class PolygonConcavityIndex {
 			if( orientation < 0) minusOneCount++;
 		}
 
-		//System.out.println(Arrays.toString(orientations));
-
 		//Convex figures will have the same sign for all nozero orientations in the array
 		if( plusOneCount >0 && minusOneCount ==0 || minusOneCount >0 && plusOneCount ==0 ) {
 			return -1;
@@ -92,7 +90,6 @@ public class PolygonConcavityIndex {
 
 		//Can't happen.
 		return 99;
-
 	}
 
 	/*
