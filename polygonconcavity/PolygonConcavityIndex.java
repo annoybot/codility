@@ -65,13 +65,9 @@ public class PolygonConcavityIndex {
 		 * Note: that co-linear points will give an orientation of zero.
 		 */
 		for(int i=0; i<A.length; i++) {
-			int indexOfA = i;
-			int indexOfB = (i+1) % A.length;
-			int indexOfC = (i+2) % A.length;
-
-			Point2D a = A[indexOfA];
-			Point2D b = A[indexOfB];
-			Point2D c = A[indexOfC];
+			Point2D a = A[i];
+			Point2D b = A[(i+1) % A.length];
+			Point2D c = A[(i+2) % A.length];
 
 			int orientation = triangleOrientation(a,b,c);
 			orientations[i] = orientation;
