@@ -111,46 +111,9 @@ public class PolygonConcavityIndex {
 			return d<0 ? -1 : 1;
 	}
 
-	/**
-	 * Return the determinant, of the two provided points
-	 * normalized to 1 or -1.
-	 * 
-	 * | 1 a.x  a.y |
-	 * | 1 b.x  b.y |
-	 * | 1 c.x  c.y |
-	 * 
-	 * Basically we are just preserving the sign of the determinant.
-	 *
-	 * This formula gives the orientation of the triangle formed
-	 * by the points a,b,c.  If traversing from a to b to c takes you 
-	 * clockwise around the plane, then you get a +1, if it takes
-	 * you counterclockwise, you get a -1.
-	 * 
-	 * See: http://mathoverflow.net/a/44098
-	 *
-	 * @param a
-	 * @param b
-	 * @return
-	 */
-	/*
-	@Deprecated
-	public int triangleOrientation(Point2D a, Point2D b, Point2D c)
-	{
-		long d = ((long)b.x*c.y - (long)b.y*c.x) - 
-				  (long)a.x*((long)c.y-(long)b.y) + 
-				  (long)a.y*((long)c.x-(long)b.x);
-
-		if( d ==0 )
-			return 0;
-		else
-			return d<0 ? -1 : 1;
-	}
-	 */
 
 	public static void main(String args[]) {
 		PolygonConcavityIndex instance = new PolygonConcavityIndex();
-
-		//System.err.println(instance.triangleOrientation(new Point2D(1,1), new Point2D(2,2), new Point2D(20,20)));
 
 		List<TestCase> testCases = new ArrayList<TestCase>();
 
