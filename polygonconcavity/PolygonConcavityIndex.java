@@ -15,7 +15,7 @@ public class PolygonConcavityIndex {
 		if(A.length >=0 && A.length <=2)
 			return -1;
 
-		/*  Strictly speaking keeping two counters for this info is redundant, 
+		/*  Strictly speaking keeping two separate counters for this info is redundant, 
 		 *  but it makes the logic so much easier to understand
 		 */
 		int plusOneCount =0;
@@ -23,8 +23,9 @@ public class PolygonConcavityIndex {
 		int orientations[] = new int[A.length];
 
 		/*
-		 * Take every point, a and the next two points
-		 * b, and c following a. These form a triangle.
+		 * Take every three consecutive points from the polygon: a,b and c.
+		 * 
+		 * These form a triangle.
 		 * 
 		 * Use the formula in  triangleOrientation
 		 * to see if the orientation of the 
@@ -46,12 +47,12 @@ public class PolygonConcavityIndex {
 		 *   \|
 		 *    a
 		 * 
-		 * The figure is convex <=> if each triangle formed this way
-		 * retains the same orientation for each a.
+		 * The polygon is convex <=> if each triangle formed this way
+		 * retains the same orientation for each initial point 'a'.
 		 * 
 		 * The algorithm works as follows:
 		 * 
-		 * We iterate through all the points in the figure and  keep track 
+		 * We iterate through all the points in the polygon and  keep track 
 		 * of the orientations of the triangles described above 
 		 * in an array and also keep a count of clockwise orientations and 
 		 * counter clockwise orientations. 
@@ -60,7 +61,7 @@ public class PolygonConcavityIndex {
 		 * are of the same sign, then the figure is convex and we return -1
 		 * 
 		 * Otherwise we use the info collected to find the midpoint 
-		 * of the first line segment that has the opposite orientation.
+		 * of the first line segment that has an orientation opposite to the rest.
 		 * 
 		 * Note: that co-linear points will give an orientation of zero.
 		 */
