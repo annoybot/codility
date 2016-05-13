@@ -8,6 +8,10 @@ import java.util.List;
  * Score 72%
  * 
  * https://codility.com/programmers/task/min_abs_sum/
+ * 
+ * Correct but fils performance tests because it is O(N²)
+ * 
+ * We need to be smarter how we run through the main loop near line 65
 
  */
 public class MinAbsSum {
