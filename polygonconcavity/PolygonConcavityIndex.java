@@ -74,6 +74,8 @@ public class PolygonConcavityIndex {
 
 			int orientation = triangleOrientation(a,b,c);
 			orientations[i] = orientation;
+			
+			//System.out.println(Arrays.toString(orientations));
 
 			if( orientation > 0) plusOneCount++;
 
@@ -92,6 +94,8 @@ public class PolygonConcavityIndex {
 			 * For example if you had   a figure where there was a greater density of points in 
 			 * the 'concave' portion of the polygon then this code would end up returning a point 
 			 * on the convex part of the polygon, which is incorrect.
+			 * 
+			 * See final testcase in main() for an example that fails this.
 			 * 
 			 * Fix this later.
 			 * 
@@ -138,13 +142,16 @@ public class PolygonConcavityIndex {
 		//Square
 		testCases.add(new TestCase(-1,new Point2D[] { new Point2D(0,0), new Point2D(0,1), 
 				new Point2D(1,1), new Point2D(1,0)}));
-		//Codility example from problem statement, not convex, index 2.
+		
+		//Codility example from problem statement, convex.
 		testCases.add(new TestCase(-1,new Point2D[] { new Point2D(-1,3), new Point2D(3,1), 
 				new Point2D(0,-1), new Point2D(-2,1)}));
+		
 		// 'M' figure, square with an indent in it at (5,5,). Not Convex.
 		testCases.add(new TestCase(2,new Point2D[] { new Point2D(0,0), new Point2D(10,0), 
 				new Point2D(5,5), new Point2D(10,10), 
 				new Point2D(0,10)}));
+		
 		// Boomerang
 		testCases.add(new TestCase(3,new Point2D[] { new Point2D(0,0), new Point2D(1,5), 
 				new Point2D(5,5), new Point2D(2,4)}));
@@ -158,6 +165,20 @@ public class PolygonConcavityIndex {
 		testCases.add(new TestCase(2,new Point2D[] { new Point2D(0,0), new Point2D(2,2), 
 				new Point2D(4,4), new Point2D(5,6),
 				new Point2D(6,8), new Point2D(6,0)}));
+		
+		// Convex shape with more concave pints than convex ones. Fails!
+		testCases.add(new TestCase(1,new Point2D[] { 
+						new Point2D(0,0), //Start of concave points (6)
+						new Point2D(3,2),
+						new Point2D(5,5),
+						new Point2D(6,8),
+						new Point2D(6,11),
+						new Point2D(5,14),
+						new Point2D(3,17), //Start of convex points (4)
+						new Point2D(0,19),
+						new Point2D(17,11),
+						new Point2D(17,5) 
+						}));
 
 		for(TestCase testCase : testCases) {
 			int result = instance.solution(testCase.input);
