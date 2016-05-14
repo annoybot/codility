@@ -8,6 +8,8 @@ import java.util.List;
  * Score 100%
  * 
  * https://codility.com/programmers/task/polygon_concavity_index/
+ * 
+ * https://codility.com/demo/results/trainingNNB423-PS3/
  */
 public class PolygonConcavityIndex {
 
