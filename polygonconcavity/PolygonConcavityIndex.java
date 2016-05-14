@@ -83,6 +83,17 @@ public class PolygonConcavityIndex {
 			return -1;
 		}
 		else {
+			/* FIXME: The requirement is that we return a point that is not on the convex hull.
+			 * 
+			 * I don't think this code will satisfy this requirement.
+			 * 
+			 * For example if you had   a figure where there was a greater density of points in 
+			 * the 'concave' portion of the polygon then this code would end up returning a point 
+			 * on the convex part of the polygon, which is incorrect.
+			 * 
+			 * Fix this later.
+			 * 
+			 */
 			int lookingFor = plusOneCount > minusOneCount ? -1 : 1;
 			for(int j=0; j<orientations.length; j++)
 				if(orientations[j]==lookingFor)
